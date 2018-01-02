@@ -42,7 +42,7 @@ Signals this module listents to:
 @signals.command_received.connect
 def handle(message):
     #mac.send_message("Hello type `!help` for help", message.conversation)
-    if message.command.lower() == "hi" or message.command.lower() == "hey" or message.command.lower() == "hello":
+    if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
         hi(message)
     elif message.command.lower() == "login":
         mac.send_message("You don't need to login", message.conversation)

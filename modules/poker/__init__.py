@@ -21,13 +21,12 @@ def handle(message):
     else:
         handle_action(message)
         
-    
+
 '''
 Handles command
 - Create a game
 - Start a game
 !poll <argument>
-
 '''
 def handle_command(message):
     arg = message.predicate.split(' ')[0]
@@ -54,7 +53,6 @@ def handle_command(message):
 Handles action
 - Join game action
 - Playing actions
-
 '''
 def handle_action(message):
     WAPoker.handle_action(message)
