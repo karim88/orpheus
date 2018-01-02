@@ -164,12 +164,11 @@ def send_video(path, conversation, caption=None):
         media_send(entity, conversation, path, RequestUploadIqProtocolEntity.MEDIA_TYPE_VIDEO)
     else:
         print("Video doesn't exists")
-        
-        
+
+
 def send_video_to(path, phone_number, caption=None):
     jid = Jid.normalize(phone_number)
     send_video(path, jid, caption)
-    
 
 """
 Still not supported
