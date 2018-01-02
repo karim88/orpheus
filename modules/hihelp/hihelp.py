@@ -18,22 +18,18 @@ errMsg = [
     'Ask for Help'
 ]
 
-
-@signals.message_received.connect
-def handle(message):
-    if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
-        hi(message)
-
-
 '''
 Signals this module listents to:
 1. When a message is received (signals.command_received)
 ==========================================================
 '''
+@signals.message_received.connect
 @signals.command_received.connect
 def handle(message):
     #mac.send_message("Hello type `!help` for help", message.conversation)
-    if message.command.lower() == "login":
+    if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
+        hi(message)
+    elif message.command.lower() == "login":
         mac.send_message("You don't need to login", message.conversation)
     elif message.command.lower() == 'car':
         msg = ""

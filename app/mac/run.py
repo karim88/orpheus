@@ -30,7 +30,7 @@ class MacStack(object):
         self.stack.setProp(PROP_IDENTITY_AUTOTRUST, True)
 
     def start(self):
-        print("[Whatsapp] Mac started\n")
+        print("[Whatsapp] Orpheus started\n")
 
         self.stack.broadcastEvent(YowLayerEvent(YowNetworkLayer.EVENT_STATE_CONNECT))
 
