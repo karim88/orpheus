@@ -18,21 +18,12 @@ errMsg = [
     'Ask for Help'
 ]
 
-def findCars(message):
-    sender_phone = phoneNum(message)
-    return [car for car in cars if car['sender_phone'] == sender_phone]
-def findCar(message, car_id):
-    sender_phone = phoneNum(message)
-    return [car for car in cars if car['sender_phone'] == sender_phone and car['id'] == car_id]
-def findCarByName(message, name):
-    sender_phone = phoneNum(message)
-    return [car for car in cars if car['sender_phone'] == sender_phone and car['name'].lower() == name.lower()]
-def findCarByModel(message, model):
-    sender_phone = phoneNum(message)
-    return [car for car in cars if car['sender_phone'] == sender_phone and car['model'].lower() == model.lower()]
-def findCarBymatricule(message, matricule):
-    sender_phone = phoneNum(message)
-    return [car for car in cars if car['sender_phone'] == sender_phone and car['matricule'].lower() == matricule.lower()]
+
+@signals.message_received.connect
+def handle(message):
+    if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
+        hi(message)
+
 
 '''
 Signals this module listents to:
@@ -44,7 +35,7 @@ def handle(message):
     #mac.send_message("Hello type `!help` for help", message.conversation)
     if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
         hi(message)
-    elif message.command.lower() == "login":
+    if message.command.lower() == "login":
         mac.send_message("You don't need to login", message.conversation)
     elif message.command.lower() == 'car':
         msg = ""
@@ -109,3 +100,19 @@ def help(message):
              "☆ !cars | List cars by page each page has 4 cars\n" \
              "☆ !help | Display help"
     mac.send_message(answer, message.conversation)
+
+def findCars(message):
+    sender_phone = phoneNum(message)
+    return [car for car in cars if car['sender_phone'] == sender_phone]
+def findCar(message, car_id):
+    sender_phone = phoneNum(message)
+    return [car for car in cars if car['sender_phone'] == sender_phone and car['id'] == car_id]
+def findCarByName(message, name):
+    sender_phone = phoneNum(message)
+    return [car for car in cars if car['sender_phone'] == sender_phone and car['name'].lower() == name.lower()]
+def findCarByModel(message, model):
+    sender_phone = phoneNum(message)
+    return [car for car in cars if car['sender_phone'] == sender_phone and car['model'].lower() == model.lower()]
+def findCarBymatricule(message, matricule):
+    sender_phone = phoneNum(message)
+    return [car for car in cars if car['sender_phone'] == sender_phone and car['matricule'].lower() == matricule.lower()]
