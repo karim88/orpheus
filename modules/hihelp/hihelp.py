@@ -24,7 +24,6 @@ Signals this module listents to:
 ==========================================================
 '''
 @signals.message_received.connect
-@signals.command_received.connect
 def handle(message):
     #mac.send_message("Hello type `!help` for help", message.conversation)
     if message.message.lower() == "hi" or message.message.lower() == "hey" or message.message.lower() == "hello":
